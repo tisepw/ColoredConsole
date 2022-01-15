@@ -13,7 +13,7 @@
  
  - [x] Move Write methods to separate file
 
- - [ ] Move Spinner and Loader methods to separate file
+ - [x] Move Spinner and Loader methods to separate files
 
 
  === 12.01.22 ===
