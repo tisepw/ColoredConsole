@@ -14,6 +14,7 @@ namespace ColoredConsole
             Comment = ConsoleColor.DarkGray
         }
 
+
         public static void WriteLog(string _text, LogStatus _color, bool _newline = true, bool _timestamp = true)
         {
             Write((_timestamp ? $"[{DateTime.Now:T}] " : ""), false);
