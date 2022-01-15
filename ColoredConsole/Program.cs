@@ -5,25 +5,24 @@ namespace ColoredConsole
 {
     public class Spinner
     {
-        public Spinner(string _text, int _delay = 100)
+        public Spinner(string _text)
         {
-            delay = _delay;
             text = _text;
             thread = new Thread(Animate);
         }
 
         private const string cycle = @"/-\|";
         private readonly Thread thread;
-        private readonly int delay;
-        private bool isActive = false;
         private readonly string text;
+        private const int delay = 100;
+        private bool isActive = false;
         private int counter = 0;
         private int left;
         private int top;
 
         public void Start()
         {
-            Program.WriteLog(text + " [ ]", Program.LogStatus.Default, true, false);
+            Program.WriteLog($"{text} [ ]", Program.LogStatus.Default, false);
 
             left = Console.CursorLeft - 2;
             top = Console.CursorTop;
@@ -49,15 +48,8 @@ namespace ColoredConsole
                 Draw();
                 Thread.Sleep(delay);
             }
-            try
-            {
-                thread.Interrupt();
-                Thread.Sleep(Timeout.Infinite);
-            }
-            catch (ThreadInterruptedException)
-            {
 
-            }
+            thread.Interrupt();
         }
 
         private void Draw()
@@ -69,35 +61,53 @@ namespace ColoredConsole
 
     public class Loader
     {
-        public Loader()
+        public Loader(string _text)
         {
+            text = _text;
             thread = new Thread(Animate);
         }
 
         private readonly Thread thread;
-        private int counter = 0;
+        private readonly string text;
+        private bool isActive = false;
+        private byte progress = 0;
         private int left;
         private int top;
 
         public void Start()
         {
+            Program.WriteLog($"{text} [.........................]", Program.LogStatus.Default, false);
+
+            left = Console.CursorLeft - 26;
+            top = Console.CursorTop;
+
             if (!thread.IsAlive)
                 thread.Start();
         }
 
-        public void Stop()
+        private void Stop(bool _successful = true)
         {
+            isActive = false;
             thread.Join();                          // reread
+
+            Console.SetCursorPosition(left, top);
+            Console.Write(_successful ? "] [v]\n" : "] [x]\n");
         }
+
 
         private void Animate()
         {
+            while (isActive)
+            {
+                Draw();
+            }
 
+            thread.Interrupt();
         }
 
         private void Draw()
         {
-
+            Console.SetCursorPosition(left + progress, top);
         }
     }
 
@@ -113,7 +123,37 @@ namespace ColoredConsole
             Comment = ConsoleColor.DarkGray
         }
 
+
         private static void Main(string[] args)
+        {
+            //TestColor();
+            TestSpinner();
+            //TestLoader();
+            
+
+            WriteLog("Exit . . .", LogStatus.Comment);
+            Console.ReadKey();
+        }
+
+
+        public static void WriteLog(string _text, LogStatus _color, bool _newline = true, bool _timestamp = true)
+        {
+            Write((_timestamp ? $"[{DateTime.Now:T}] " : ""), false);
+
+            Console.ForegroundColor = (ConsoleColor)_color;
+            
+            Write(_text, _newline);
+
+            Console.ResetColor();
+        }
+
+        public static void Write(string _text, bool _newline = true)
+        {
+            Console.Write(_text + (_newline ? "\n" : ""));
+        }
+
+
+        public static void TestColor()
         {
             WriteLog("TODO: fix files on server", LogStatus.Comment);
             WriteLog("Initialize colors . . .", LogStatus.Default);
@@ -128,30 +168,29 @@ namespace ColoredConsole
             WriteLog("All files downloaded. Installing . . .", LogStatus.Success);
             WriteLog("Some troubles found.", LogStatus.Warning);
             WriteLog("Whoops! Error occured. Get some help.", LogStatus.Error);
+        }
 
-            Spinner spinner = new ("Trying to fix");
+        public static void TestSpinner()
+        {
+            Spinner spinner = new("Trying to fix");
             spinner.Start();
             Thread.Sleep(5000);
             spinner.Stop(false);
-
-            WriteLog("Exit . . .", LogStatus.Comment);
-            Console.ReadKey();
         }
 
-        public static void WriteLog(string _text, LogStatus _color, bool _timestamp = true, bool _newline = true)
+        public static void TestLoader()
         {
-            Write((_timestamp ? $"[{DateTime.Now:T}] " : ""), false);
+            WriteLog("Downloading [############.............]", LogStatus.Default);
+            WriteLog("Downloading [.........................]", LogStatus.Default);
 
-            Console.ForegroundColor = (ConsoleColor)_color;
+            /*
             
-            Write(_text, _newline);
+            Loader loader = new("Downloading");
+            loader.Start();
+            loader.setProgress();
+            loader.Stop(false);
 
-            Console.ResetColor();
-        }
-
-        public static void Write(string _text, bool _newline = true)
-        {
-            Console.Write(_text + (_newline ? "\n" : ""));
+             */
         }
     }
 }
