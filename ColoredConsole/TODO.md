@@ -9,9 +9,9 @@
 
  === 15.01.22 ===
 
- - [v] Create loader animation
+ - [x] Create loader animation
  
- - [ ] Move Write methods to separate file
+ - [x] Move Write methods to separate file
 
  - [ ] Move Spinner and Loader methods to separate file
 

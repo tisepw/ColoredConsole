@@ -22,7 +22,7 @@ namespace ColoredConsole
 
         public void Start()
         {
-            Program.WriteLog($"{text} [ ]", Program.LogStatus.Default, false);
+            Writer.WriteLog($"{text} [ ]", Writer.LogStatus.Default, false);
 
             left = Console.CursorLeft - 2;
             top = Console.CursorTop;
@@ -59,6 +59,8 @@ namespace ColoredConsole
         }
     }
 
+
+
     public class Loader
     {
         public Loader(string _text)
@@ -74,7 +76,7 @@ namespace ColoredConsole
 
         public void Start()
         {
-            Program.WriteLog($"{text} [.........................]", Program.LogStatus.Default, false);
+            Writer.WriteLog($"{text} [.........................]", Writer.LogStatus.Default, false);
 
             left = Console.CursorLeft - 26;
             top = Console.CursorTop;
@@ -105,64 +107,38 @@ namespace ColoredConsole
         }
     }
 
+
+
     public class Program
     {
-        public enum LogStatus : byte // Reread about using "byte" struct
-        {
-            Default = ConsoleColor.Gray,
-            Warning = ConsoleColor.Yellow,
-            Error = ConsoleColor.Red,
-            Success = ConsoleColor.Green,
-            Info = ConsoleColor.Cyan,
-            Comment = ConsoleColor.DarkGray
-        }
-
-
         private static void Main(string[] args)
         {
-            //TestColor();
-            //TestSpinner();
+            TestColor();
+            TestSpinner();
             TestLoader();
 
             //Thread.Sleep(5000);
 
-            WriteLog("Exit . . .", LogStatus.Comment);
+            Writer.WriteLog("Exit . . .", Writer.LogStatus.Comment);
             Console.ReadKey();
-        }
-
-
-        public static void WriteLog(string _text, LogStatus _color, bool _newline = true, bool _timestamp = true)
-        {
-            Write((_timestamp ? $"[{DateTime.Now:T}] " : ""), false);
-
-            Console.ForegroundColor = (ConsoleColor)_color;
-            
-            Write(_text, _newline);
-
-            Console.ResetColor();
-        }
-
-        public static void Write(string _text, bool _newline = true)
-        {
-            Console.Write(_text + (_newline ? "\n" : ""));
         }
 
 
         public static void TestColor()
         {
-            WriteLog("TODO: fix files on server", LogStatus.Comment);
-            WriteLog("Initialize colors . . .", LogStatus.Default);
-            WriteLog("We have new update. Downloading . . .", LogStatus.Info);
+            Writer.WriteLog("TODO: fix files on server", Writer.LogStatus.Comment);
+            Writer.WriteLog("Initialize colors . . .", Writer.LogStatus.Default);
+            Writer.WriteLog("We have new update. Downloading . . .", Writer.LogStatus.Info);
 
             for (byte i = 1; i < 6; i++)
             {
-                WriteLog($"Download part {i}/5", LogStatus.Default);
+                Writer.WriteLog($"Download part {i}/5", Writer.LogStatus.Default);
                 Thread.Sleep(200);
             }
 
-            WriteLog("All files downloaded. Installing . . .", LogStatus.Success);
-            WriteLog("Some troubles found.", LogStatus.Warning);
-            WriteLog("Whoops! Error occured. Get some help.", LogStatus.Error);
+            Writer.WriteLog("All files downloaded. Installing . . .", Writer.LogStatus.Success);
+            Writer.WriteLog("Some troubles found.", Writer.LogStatus.Warning);
+            Writer.WriteLog("Whoops! Error occured. Get some help.", Writer.LogStatus.Error);
         }
 
         public static void TestSpinner()
