@@ -64,12 +64,16 @@ namespace ColoredConsole
         public Loader(string _text)
         {
             text = _text;
-            thread = new Thread(Animate);
+            thread = new Thread(() => {
+                if (!isActive)
+                    thread.Interrupt();
+            });
         }
 
         private readonly Thread thread;
         private readonly string text;
         private bool isActive = false;
+        private byte prevPosition;
         private byte progress = 0;
         private int left;
         private int top;
@@ -81,33 +85,36 @@ namespace ColoredConsole
             left = Console.CursorLeft - 26;
             top = Console.CursorTop;
 
+            isActive = true;
             if (!thread.IsAlive)
                 thread.Start();
         }
 
-        private void Stop(bool _successful = true)
+        public void Stop(bool _successful = true)
         {
             isActive = false;
             thread.Join();                          // reread
 
-            Console.SetCursorPosition(left, top);
-            Console.Write(_successful ? "] [v]\n" : "] [x]\n");
+            Console.SetCursorPosition(left + 27, top);
+            Console.Write(_successful ? "[v]\n" : "[x]\n");
         }
 
-
-        private void Animate()
+        public void SetProgress(byte _progress)
         {
-            while (isActive)
+            if (progress < _progress && _progress < 100)
+                progress = _progress;
+
+            if (prevPosition < left + (progress / 4))
             {
                 Draw();
+                prevPosition = (byte)(left + (progress / 4));
             }
-
-            thread.Interrupt();
         }
 
         private void Draw()
         {
-            Console.SetCursorPosition(left + progress, top);
+            Console.SetCursorPosition(left + (progress / 4), top);
+            Console.Write("#");
         }
     }
 
@@ -127,9 +134,10 @@ namespace ColoredConsole
         private static void Main(string[] args)
         {
             //TestColor();
-            TestSpinner();
-            //TestLoader();
-            
+            //TestSpinner();
+            TestLoader();
+
+            //Thread.Sleep(5000);
 
             WriteLog("Exit . . .", LogStatus.Comment);
             Console.ReadKey();
@@ -180,17 +188,16 @@ namespace ColoredConsole
 
         public static void TestLoader()
         {
-            WriteLog("Downloading [############.............]", LogStatus.Default);
-            WriteLog("Downloading [.........................]", LogStatus.Default);
-
-            /*
-            
             Loader loader = new("Downloading");
             loader.Start();
-            loader.setProgress();
-            loader.Stop(false);
 
-             */
+            for (byte i = 0; i < 51; i++)
+            {
+                loader.SetProgress(i);
+                Thread.Sleep(100);
+            }
+
+            loader.Stop(false);
         }
     }
 }
