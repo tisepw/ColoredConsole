@@ -7,9 +7,9 @@
  - [ ] Create interface for methods
 
 
- === 13.01.22 ===
+ === 15.01.22 ===
 
- - [ ] Create loader animation
+ - [v] Create loader animation
  
  - [ ] Move Write methods to separate file
 
