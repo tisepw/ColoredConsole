@@ -64,15 +64,9 @@ namespace ColoredConsole
         public Loader(string _text)
         {
             text = _text;
-            thread = new Thread(() => {
-                if (!isActive)
-                    thread.Interrupt();
-            });
         }
 
-        private readonly Thread thread;
         private readonly string text;
-        private bool isActive = false;
         private byte prevPosition;
         private byte progress = 0;
         private int left;
@@ -84,17 +78,10 @@ namespace ColoredConsole
 
             left = Console.CursorLeft - 26;
             top = Console.CursorTop;
-
-            isActive = true;
-            if (!thread.IsAlive)
-                thread.Start();
         }
 
         public void Stop(bool _successful = true)
         {
-            isActive = false;
-            thread.Join();                          // reread
-
             Console.SetCursorPosition(left + 27, top);
             Console.Write(_successful ? "[v]\n" : "[x]\n");
         }
