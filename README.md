@@ -105,7 +105,7 @@ Example:
 Writer.CreateLogFile("v1.0.6"); // After starting the project, a file will be created along the path ".\logs\v1.0.6\23.03.29-15:41:25.log"
 ```
 
-<img src="https://user-images.githubusercontent.com/33760265/228566498-97983abb-3718-4096-8021-878039c6632e.png" alt="Lamp" width="10" height="10"></img>
+<img src="https://user-images.githubusercontent.com/33760265/228566498-97983abb-3718-4096-8021-878039c6632e.png" alt="Lamp" width="16" height="16"></img>
 Tip: You can change date formatting for Writer.Log [here](https://github.com/VladDen4/ColoredConsole/blob/1c099fde66437a6369915adf3cf5c7bd2ff129b9/ColoredConsole/Writer.cs#L93) and for LogFile [here](https://github.com/VladDen4/ColoredConsole/blob/1c099fde66437a6369915adf3cf5c7bd2ff129b9/ColoredConsole/Writer.cs#L52).
 </details>
 
