@@ -5,6 +5,9 @@ using System;
 
 namespace ColoredConsole
 {
+    /// <summary>
+    /// Default colors for console.
+    /// </summary>
     public enum LogStatus : byte // Reread about using "byte" struct
     {
         Default = ConsoleColor.Gray,
