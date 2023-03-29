@@ -6,7 +6,8 @@
 Just... Console with colors and animations for 'professional' style.
 
 ## Preview
-![ColoredConsoleReadme_v0 2 6-beta](https://user-images.githubusercontent.com/33760265/228392900-57d95a31-8874-4800-8e00-56c4518c5462.gif)
+![ColoredConsoleReadme-v1 0 5](https://user-images.githubusercontent.com/33760265/228403814-fc4349b0-c9e9-4a7e-9b9f-2ebbf6c2de9f.gif)
+
 
 <details>
 <summary>code</summary>
@@ -20,26 +21,26 @@ private static void Main(string[] args)
 
     Thread.Sleep(1000);
 
-    Writer.WriteLog("Exit . . .", LogStatus.Comment);
+    Writer.Log("Exit . . .");
     Console.ReadKey();
 }
 
 
 public static void TestColor()
 {
-    Writer.WriteLog("TODO: fix files on server", LogStatus.Comment);
-    Writer.WriteLog("Initialize colors . . .", LogStatus.Default);
-    Writer.WriteLog("We have new update. Downloading . . .", LogStatus.Info);
+    Writer.Log("TODO: fix files on server");
+    Writer.Log("Initialize colors . . .", LogStatus.Default);
+    Writer.Log("We have new update. Downloading . . .", LogStatus.Info);
 
     for (byte i = 1; i < 6; i++)
     {
-        Writer.WriteLog($"Download part {i}/5", LogStatus.Default);
+        Writer.Log($"Download part {i}/5");
         Thread.Sleep(200);
     }
 
-    Writer.WriteLog("All files downloaded. Installing . . .", LogStatus.Success);
-    Writer.WriteLog("Some troubles found.", LogStatus.Warning);
-    Writer.WriteLog("Whoops! Error occured. Get some help.", LogStatus.Error);
+    Writer.Log("All files downloaded. Installing . . .", LogStatus.Success);
+    Writer.Log("Some troubles found.", LogStatus.Warning);
+    Writer.Log("Whoops! Error occured. Get some help.", LogStatus.Error);
 }
 
 public static void TestSpinner()
