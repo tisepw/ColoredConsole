@@ -6,7 +6,7 @@
 Just... Console with colors and animations for 'professional' style.
 
 ## Preview
-![ColoredConsoleReadme-v1 0 5](https://user-images.githubusercontent.com/33760265/228403814-fc4349b0-c9e9-4a7e-9b9f-2ebbf6c2de9f.gif)
+![Readme-v1 0 6](https://user-images.githubusercontent.com/33760265/228528705-0f4af36a-a976-4ec8-8929-16705e39bd6f.gif)
 
 
 <details>
