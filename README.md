@@ -71,7 +71,7 @@ public static void TestLoader()
 Download the source code of the [Latest version](https://github.com/VladDen4/ColoredConsole/releases/latest) and integrate it into your project.
 
 ### Issues
-To report issues, please head over to the [Issues](https://github.com/VladDen4/ColoredConsole/issues) page.
+To report issues or suggest a new feature, please head over to the [Issues](https://github.com/VladDen4/ColoredConsole/issues) page.
 
 ### Contributions
 For contributions, please open a [Pull request](https://github.com/VladDen4/ColoredConsole/pull/new).
