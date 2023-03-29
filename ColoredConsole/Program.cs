@@ -11,10 +11,10 @@ namespace ColoredConsole
         private static void Main(string[] args)
         {
             TestColor();
-            //TestSpinner();
-            //TestLoader();
+            TestSpinner();
+            TestLoader();
 
-            //Thread.Sleep(5000);
+            Thread.Sleep(1000);
 
             Writer.WriteLog("Exit . . .", LogStatus.Comment);
             Console.ReadKey();
