@@ -16,26 +16,26 @@ namespace ColoredConsole
 
             Thread.Sleep(1000);
 
-            Writer.WriteLog("Exit . . .", LogStatus.Comment);
+            Writer.Log("Exit . . .");
             Console.ReadKey();
         }
 
 
         public static void TestColor()
         {
-            Writer.WriteLog("TODO: fix files on server", LogStatus.Comment);
-            Writer.WriteLog("Initialize colors . . .", LogStatus.Default);
-            Writer.WriteLog("We have new update. Downloading . . .", LogStatus.Info);
+            Writer.Log("TODO: fix files on server");
+            Writer.Log("Initialize colors . . .", LogStatus.Default);
+            Writer.Log("We have new update. Downloading . . .", LogStatus.Info);
 
             for (byte i = 1; i < 6; i++)
             {
-                Writer.WriteLog($"Download part {i}/5", LogStatus.Default);
+                Writer.Log($"Download part {i}/5");
                 Thread.Sleep(200);
             }
 
-            Writer.WriteLog("All files downloaded. Installing . . .", LogStatus.Success);
-            Writer.WriteLog("Some troubles found.", LogStatus.Warning);
-            Writer.WriteLog("Whoops! Error occured. Get some help.", LogStatus.Error);
+            Writer.Log("All files downloaded. Installing . . .", LogStatus.Success);
+            Writer.Log("Some troubles found.", LogStatus.Warning);
+            Writer.Log("Whoops! Error occured. Get some help.", LogStatus.Error);
         }
 
         public static void TestSpinner()

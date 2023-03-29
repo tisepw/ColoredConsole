@@ -21,7 +21,7 @@ namespace ColoredConsole
 
         public void Start()
         {
-            Writer.WriteLog($"{text} [.........................]", LogStatus.Default, false);
+            Writer.Log($"{text} [.........................]", LogStatus.Default, false);
 
             left = Console.CursorLeft - 26;
             top = Console.CursorTop;
