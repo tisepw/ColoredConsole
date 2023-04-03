@@ -8,9 +8,9 @@ namespace ColoredConsole
 {
     public class Spinner
     {
-        public Spinner(string _text)
+        public Spinner(string text)
         {
-            text = _text;
+            this.text = text;
             thread = new Thread(Animate);
         }
 
@@ -36,13 +36,13 @@ namespace ColoredConsole
                 thread.Start();
         }
 
-        public void Stop(bool _successful = true)
+        public void Stop(bool successful = true)
         {
             isActive = false;
             thread.Join();                          // reread
 
             Console.SetCursorPosition(left, top);
-            Console.Write(_successful ? "v]\n" : "x]\n");
+            Console.Write(successful ? "v]\n" : "x]\n");
         }
 
 

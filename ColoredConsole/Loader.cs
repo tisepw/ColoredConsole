@@ -7,9 +7,9 @@ namespace ColoredConsole
 {
     public class Loader
     {
-        public Loader(string _text)
+        public Loader(string text)
         {
-            text = _text;
+            this.text = text;
         }
 
         private readonly string text;
@@ -27,22 +27,22 @@ namespace ColoredConsole
             top = Console.CursorTop;
         }
 
-        public void Stop(bool _successful = true)
+        public void Stop(bool successful = true)
         {
             Console.SetCursorPosition(left + 27, top);
-            Console.Write(_successful ? "[v]\n" : "[x]\n");
+            Console.Write(successful ? "[v]\n" : "[x]\n");
         }
 
 
-        public void SetProgress(byte _progress)
+        public void SetProgress(byte progress)
         {
-            if (progress < _progress && _progress < 100)
-                progress = _progress;
+            if (this.progress < progress && progress < 100)
+                this.progress = progress;
 
-            if (prevPosition < left + (progress / 4))
+            if (prevPosition < left + (this.progress / 4))
             {
                 Draw();
-                prevPosition = (byte)(left + (progress / 4));
+                prevPosition = (byte)(left + (this.progress / 4));
             }
         }
 
