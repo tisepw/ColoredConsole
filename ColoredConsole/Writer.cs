@@ -13,8 +13,8 @@ namespace ColoredConsole
     class Writer
     {
         private static readonly Queue msgQueue = new();
-        private static bool isProcessing = false;
         private static string logPath = @".\logs\";
+        private static bool isProcessing = false;
         private static bool logToFile = false;
 
         /// <summary>
@@ -28,23 +28,23 @@ namespace ColoredConsole
             public readonly bool timestamp;
             public readonly bool toFile;
 
-            public Message(string _text, LogStatus _color = LogStatus.Default, bool _newLine = true, bool _timestamp = true, bool _toFile = false)
+            public Message(string text, LogStatus color = LogStatus.Default, bool newLine = true, bool timestamp = true, bool toFile = false)
             {
-                text = _text;
-                color = _color;
-                newLine = _newLine;
-                timestamp = _timestamp;
-                toFile = _toFile;
+                this.text = text;
+                this.color = color;
+                this.newLine = newLine;
+                this.timestamp = timestamp;
+                this.toFile = toFile;
             }
         }
 
         /// <summary>
         /// Create path and file name. Final path: .\logs\directoryName\yy.MM.dd-HH.mm.ss.log.
         /// </summary>
-        /// <param name="_directoryName">Log folder name.</param>
-        public static void CreateLogFile(string _directoryName)
+        /// <param name="directoryName">Log folder name.</param>
+        public static void CreateLogFile(string directoryName)
         {
-            logPath += $@"{_directoryName}\";
+            logPath += $@"{directoryName}\";
 
             if (!Directory.Exists(logPath))
                 Directory.CreateDirectory(logPath);
@@ -60,15 +60,15 @@ namespace ColoredConsole
         /// <summary>
         /// Creates a new log in the console.
         /// </summary>
-        /// <param name="_text">Text to display.</param>
-        /// <param name="_color">Text color. See colors in <see cref="LogStatus"/>.</param>
-        /// <param name="_newline">Is a newline needed?</param>
-        /// <param name="_timestamp">Is a timestamp needed?</param>
-        /// <param name="_toFile">Do you need to write to a file?</param>
-        public static void Log(string _text, LogStatus _color = LogStatus.Comment, bool _newline = true, bool _timestamp = true, bool _toFile = true)
+        /// <param name="text">Text to display.</param>
+        /// <param name="color">Text color. See colors in <see cref="LogStatus"/>.</param>
+        /// <param name="newline">Is a newline needed?</param>
+        /// <param name="timestamp">Is a timestamp needed?</param>
+        /// <param name="toFile">Do you need to write to a file?</param>
+        public static void Log(string text, LogStatus color = LogStatus.Comment, bool newline = true, bool timestamp = true, bool toFile = true)
         {
-            Message _msg = new(_text, _color, _newline, _timestamp, _toFile);
-            msgQueue.Enqueue(_msg);
+            Message message = new(text, color, newline, timestamp, toFile);
+            msgQueue.Enqueue(message);
 
             Write();
         }
@@ -88,19 +88,19 @@ namespace ColoredConsole
                 return;
             }
 
-            Message _msg = (Message)msgQueue.Dequeue();
+            Message message = (Message)msgQueue.Dequeue();
 
             string currentTime = DateTime.Now.ToString("T");
 
-            Console.Write(_msg.timestamp ? $"[{currentTime}] " : "");
+            Console.Write(message.timestamp ? $"[{currentTime}] " : "");
 
-            Console.ForegroundColor = (ConsoleColor)_msg.color;
-            Console.Write(_msg.text);
-            Console.Write(_msg.newLine ? "\n" : "");
+            Console.ForegroundColor = (ConsoleColor)message.color;
+            Console.Write(message.text);
+            Console.Write(message.newLine ? "\n" : "");
 
             Console.ResetColor();
 
-            if (logToFile && File.Exists(logPath) && _msg.toFile) File.AppendAllText(logPath, $"[{currentTime}] {_msg.text}\n");
+            if (logToFile && File.Exists(logPath) && message.toFile) File.AppendAllText(logPath, $"[{currentTime}] {message.text}\n");
 
             isProcessing = false;
 
