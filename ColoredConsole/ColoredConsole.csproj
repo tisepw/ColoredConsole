@@ -29,11 +29,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\Desktop\ColoredConsole128.png">
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="..\README.md">
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ColoredConsole128.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
