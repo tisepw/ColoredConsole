@@ -8,62 +8,7 @@ Just... Console with colors and animations for 'professional' style.
 ## Preview
 ![Readme-v1 0 6](https://user-images.githubusercontent.com/33760265/228528705-0f4af36a-a976-4ec8-8929-16705e39bd6f.gif)
 
-<details>
-    <summary>code</summary>
-    
-```csharp
-private static void Main(string[] args)
-{
-    TestColor();
-    TestSpinner();
-    TestLoader();
-
-    Thread.Sleep(1000);
-
-    Writer.Log("Exit . . .");
-    Console.ReadKey();
-}
-
-public static void TestColor()
-{
-    Writer.Log("TODO: fix files on server");
-    Writer.Log("Initialize colors . . .", LogStatus.Default);
-    Writer.Log("We have new update. Downloading . . .", LogStatus.Info);
-
-    for (byte i = 1; i < 6; i++)
-    {
-        Writer.Log($"Download part {i}/5");
-        Thread.Sleep(200);
-    }
-    
-    Writer.Log("All files downloaded. Installing . . .", LogStatus.Success);
-    Writer.Log("Some troubles found.", LogStatus.Warning);
-    Writer.Log("Whoops! Error occured. Get some help.", LogStatus.Error);
-}
-    
-public static void TestSpinner()
-{
-    Spinner spinner = new("Trying to fix");
-    spinner.Start();
-    Thread.Sleep(5000);
-    spinner.Stop(false);
-}
-
-public static void TestLoader()
-{
-    Loader loader = new("Downloading");
-    loader.Start();
-
-    for (byte i = 0; i < 51; i++)
-    {
-        loader.SetProgress(i);
-        Thread.Sleep(100);
-    }
-
-    loader.Stop(false);
-}
-```
-</details>
+You can find the source code from the preview [here](https://gist.github.com/VladDen4/b6d301e6a2075f2e906ee5d2711ffb4c).
 
 <details>
     <summary><h2>Usage<h2></summary>
