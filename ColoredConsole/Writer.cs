@@ -10,7 +10,7 @@ namespace ColoredConsole
     /// <summary>
     /// Console with colors for 'professional' style.
     /// </summary>
-    class Writer
+    public static class Writer
     {
         private static readonly Queue msgQueue = new();
         private static string logPath = @".\logs\";
