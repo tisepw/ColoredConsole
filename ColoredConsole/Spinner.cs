@@ -23,7 +23,6 @@ namespace ColoredConsole
         private int left;
         private int top;
 
-
         public void Start()
         {
             Writer.Log($"{text} [ ]", LogStatus.Default, false);
@@ -44,7 +43,6 @@ namespace ColoredConsole
             Console.SetCursorPosition(left, top);
             Console.Write(successful ? "v]\n" : "x]\n");
         }
-
 
         private void Animate()
         {
