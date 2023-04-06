@@ -1,9 +1,42 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <Version>1.1.1</Version>
+    <ApplicationIcon>ColoredConsole128.ico</ApplicationIcon>
+    <PackageId>Tise.Util.ColoredConsole</PackageId>
+    <Title>ColoredConsole</Title>
+    <Version>1.1.2</Version>
+    <Authors>Tise</Authors>
+    <Product>ColoredConsole</Product>
+    <Description>Just... Console with colors and animations for 'professional' style.</Description>
+    <PackageIcon>ColoredConsole128.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/VladDen4/ColoredConsole</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/VladDen4/ColoredConsole</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>log, color, console</PackageTags>
+    <PackageReleaseNotes>Package created and published. More info at https://github.com/VladDen4/ColoredConsole</PackageReleaseNotes>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="ColoredConsole128.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Desktop\ColoredConsole128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
