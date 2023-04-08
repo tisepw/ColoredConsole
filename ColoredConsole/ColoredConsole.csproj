@@ -6,17 +6,17 @@
     <ApplicationIcon>ColoredConsole128.ico</ApplicationIcon>
     <PackageId>Tise.Util.ColoredConsole</PackageId>
     <Title>ColoredConsole</Title>
-    <Version>1.1.2</Version>
+    <Version>1.1.5</Version>
     <Authors>Tise</Authors>
     <Product>ColoredConsole</Product>
     <Description>Just... Console with colors and animations for 'professional' style.</Description>
     <PackageIcon>ColoredConsole128.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/VladDen4/ColoredConsole</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/tisepw/ColoredConsole</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/VladDen4/ColoredConsole</RepositoryUrl>
+    <RepositoryUrl>https://github.com/tisepw/ColoredConsole</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>log, color, console</PackageTags>
-    <PackageReleaseNotes>Package created and published. More info at https://github.com/VladDen4/ColoredConsole</PackageReleaseNotes>
+    <PackageReleaseNotes>Update CreateLogFile method and readme https://github.com/tisepw/ColoredConsole</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <AssemblyVersion>$(Version)</AssemblyVersion>
     <FileVersion>$(Version)</FileVersion>
