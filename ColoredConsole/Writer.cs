@@ -42,7 +42,7 @@ namespace ColoredConsole
         /// Create path and file name. Final path: .\logs\directoryName\yy.MM.dd-HH.mm.ss.log.
         /// </summary>
         /// <param name="directoryName">Log folder name.</param>
-        public static void CreateLogFile(string directoryName)
+        public static void CreateLogFile(string directoryName = "")
         {
             logPath += $@"{directoryName}\";
 
