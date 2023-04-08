@@ -45,9 +45,11 @@ Writer.Log("Message", toFile: false);             // [15:41:25] Message  | DarkG
 
 Examples:
 ```csharp
-Writer.CreateLogFile("");             // Logs path: ".\logs\23.03.29-15:41:25.log"
-Writer.CreateLogFile("v1.0.6");       // Logs path: ".\logs\v1.0.6\23.03.29-15:41:25.log"
+Writer.CreateLogFile();               // Logs path: ".\logs\23.03.29-15:41:25.log"
+Writer.CreateLogFile(@"");            // Logs path: ".\logs\23.03.29-15:41:25.log"
+Writer.CreateLogFile(@"v1.0.6");      // Logs path: ".\logs\v1.0.6\23.03.29-15:41:25.log"
 Writer.CreateLogFile(@"v1.0.7\beta"); // Logs path: ".\logs\v1.0.7\beta\23.03.29-15:41:25.log"
+Writer.CreateLogFile(@"..\");         // Logs path: ".\23.03.29-15:41:25.log"
 ```
 
 ---
