@@ -1,6 +1,6 @@
 # ColoredConsole
 
-[![Build Test](https://github.com/VladDen4/ColoredConsole/actions/workflows/ci.yml/badge.svg?branch=master&event=push)](https://github.com/VladDen4/ColoredConsole/actions/workflows/ci.yml)
+[![Build Test](https://github.com/tisepw/ColoredConsole/actions/workflows/ci.yml/badge.svg?branch=master&event=push)](https://github.com/tisepw/ColoredConsole/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/tisepw/ColoredConsole)](https://github.com/tisepw/ColoredConsole/blob/master/LICENSE)
 [![Version](https://img.shields.io/github/v/release/tisepw/ColoredConsole?label=Version)](https://github.com/tisepw/ColoredConsole/releases/latest)
 
